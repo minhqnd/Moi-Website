@@ -98,6 +98,8 @@ body{
     padding: 14px 16px;
     margin: 10px 0;
 }
+.login-btn:hover {background-color: #1372ed;
+cursor: pointer;}
 
 .forgotten-password{
     text-align: center;
