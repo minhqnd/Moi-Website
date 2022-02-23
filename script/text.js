@@ -17,7 +17,7 @@
     text: cc4,
     index: 0,
     chars: 0,
-    speed: 100,
+    speed: 50,
     container: ".text .content",
     init: function() {
       this.chars = this.text.length;
