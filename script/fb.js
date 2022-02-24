@@ -1,4 +1,4 @@
-console.log("mò cái lồn");
+console.log("mò cái lồn.");
 
 //time
 var today = new Date();
