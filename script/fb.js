@@ -1,4 +1,5 @@
 console.log("mò cái lồn");
+console.log("282");
 
 //time
 var today = new Date();
