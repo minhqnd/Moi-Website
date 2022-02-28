@@ -15,14 +15,14 @@
 ██╔══██║██║  ╚██╗░░╚═══██╗
 ██║░░██║██║  ░╚██╗██████╔╝
 ╚═╝░░╚═╝╚═╝  ░░╚═╝╚═════╝░ -->
-<div class="hamburger-menu">
+<!-- <div class="hamburger-menu">
   <button class="burger" data-state="closed">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </div>
-<nav data-state="closed">
+ <nav data-state="closed">
   <ul>
   <li>
     <a href="#">Home</a>
@@ -37,7 +37,7 @@
     <a href="#">Contact</a>
   </li>
   </ul>
-</nav>
+</nav> -->
 <main>
   <div class="container">
     <div class="row">
@@ -302,13 +302,23 @@
         <p>Page bạn đang tìm kiếm không tồn tại.
           Việc bạn đến đây là một bí ẩn :)). Bấm vào nút bên dưới để về trang chủ nhe.
         </p>
-        <button href="www.qminh.xyz" class="btn green">HOME</button>
+        <button onclick="home()" " class="btn green">HOME</button>
       </div>
     </div>
   </div>
 </main>
+<div id="load">Redirecting...</div>
+<div>cc</div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js'></script><script  src="script/404.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase.js"></script>
+<script src="script/data.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js'></script><script  src="script/404.js"></script>
+	<script>
+	function home() {
+		window.open("./#", "_self");	
+	}
+	</script>
+
 
 </body>
 </html>
