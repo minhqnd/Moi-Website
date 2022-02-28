@@ -190,3 +190,15 @@ nav[data-state=open] ul li:nth-child(4) {
     margin-bottom: 70px;
   }
 }
+
+
+
+#load { height: 100%; width: 100%; }
+#load {
+   position    : fixed;
+   z-index     : 1; /* or higher if necessary */
+   top         : 0;
+   left        : 0;
+   overflow    : hidden;
+   background-color: white;
+}
