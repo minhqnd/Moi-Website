@@ -1,3 +1,4 @@
+
 gsap.set("svg", { visibility: "visible" });
 gsap.to("#headStripe", {
   y: 0.5,
@@ -77,11 +78,34 @@ gsap.to("#glassShine", {
   repeatDelay: 8,
   delay: 2 });
 
+    setTimeout(()=>{
+    load.style.display = "none";
+    }
+    , 5000);
 
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('nav');
+  var app;
+  var title = document.getElementById('title');
+	var cc1 = window.location.href.lastIndexOf("/");
+	var cc2 = cc1 + 1;
+	if (cc2 > 2){
+	var cc3 = window.location.href.slice(cc2);
+	var cc4 = decodeURI(cc3);
+	console.log('Đang tìm url "' + cc4 + '" để redirect...');
+	url();
+	} else { load.style.display = "none";
+	}
 
-burger.addEventListener('click', e => {
-  burger.dataset.state === 'closed' ? burger.dataset.state = "open" : burger.dataset.state = "closed";
-  nav.dataset.state === "closed" ? nav.dataset.state = "open" : nav.dataset.state = "closed";
+function url() {
+var ref = firebase.database().ref('shortenurl/' + cc4 + '/url');
+ref.on("value", function(snapshot) {
+	if (snapshot.val().length > 1) {
+   console.log(snapshot.val());
+   //window.open(snapshot.val(), "_self");
+	} else {console.log('Không tồn tại url để redirect')
+	}
+}, function (error) {
+   console.log("Error: " + error.code);
 });
+}
+
+
