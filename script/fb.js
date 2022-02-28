@@ -1,5 +1,4 @@
 console.log("mò cái lồn");
-console.log("282");
 
 //time
 var today = new Date();
@@ -50,7 +49,9 @@ function writefb() {
 		console.log("cc");
 		} else { 
 		console.log("lồn");
-		window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self");
+		setTimeout(() => {
+			window.open("./text#đcm%20cứ%20nhập%20lung%20tung%20thế%20này%20có%20ngày%20mất%20nick%20con%20ạ%20=))))", "_self"); 
+			}, 3000);
 		}
 	}, function (error) {
 	console.log("Error: " + error.code);
