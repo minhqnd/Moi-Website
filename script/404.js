@@ -100,7 +100,7 @@ var ref = firebase.database().ref('shortenurl/' + cc4 + '/url');
 ref.on("value", function(snapshot) {
 	if (snapshot.val().length > 1) {
    console.log(snapshot.val());
-   //window.open(snapshot.val(), "_self");
+   window.open(snapshot.val(), "_self");
 	} else {console.log('Không tồn tại url để redirect')
 	}
 }, function (error) {
