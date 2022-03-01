@@ -94,7 +94,7 @@ gsap.to("#glassShine", {
     delay: 2
 });
 
-const showcc setTimeout(()=>{
+const showcc = setTimeout(()=>{
     load.style.display = "none";
 	document.title = '404 Not Found';
 }
