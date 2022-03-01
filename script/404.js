@@ -94,7 +94,7 @@ gsap.to("#glassShine", {
     delay: 2
 });
 
-setTimeout(()=>{
+const showcc setTimeout(()=>{
     load.style.display = "none";
 	document.title = '404 Not Found';
 }
@@ -116,12 +116,15 @@ if (cc2 > 2) {
 function url() {
     var url = firebase.database().ref('shortenurl/' + cc4 + '/url');
     url.on("value", function(snapshot) {
-        if (snapshot.val().length > 1) {
+        if (snapshot.exists()) {
             //clickcouter
+			clearTimeout(showcc);
             firebase.database().ref('shortenurl/' + cc4 + '/click').set(firebase.database.ServerValue.increment(1));
             console.log(snapshot.val());
+			clearTimeout(myTimeout);
             window.open(snapshot.val(), "_self");
         } else {
+			load.style.display = "none";
             console.log('Không tồn tại url để redirect')
         }
     }, function(error) {
