@@ -113,7 +113,6 @@ function url() {
     url.on("value", function(snapshot) {
         if (snapshot.exists()) {
             //clickcouter
-			clearTimeout(showcc);
             firebase.database().ref('shortenurl/' + cc4 + '/click').set(firebase.database.ServerValue.increment(1));
             console.log(snapshot.val());
             window.open(snapshot.val(), "_self");
