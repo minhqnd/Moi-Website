@@ -109,19 +109,7 @@ input {
 	padding-bottom: 91px;
 }
 
-copy {
-	font-size: 2px;
-}
 
-button {
-	width: 100%;
-	padding: 16px 32px;
-	text-align: left;
-	font-size: inherit;
-	cursor: pointer;
-	background: white;
-	color: black;
-}
 
 .grad {
 	background: linear-gradient(120deg, rgba(18,194,233,1) 0%, rgba(196,113,237,1) 35%, rgba(246,79,89,1) 100%);
