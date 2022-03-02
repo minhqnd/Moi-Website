@@ -115,12 +115,15 @@ copy {
 
 button {
 	padding: 16px 32px;
-	background: linear-gradient(120deg, rgba(18,194,233,1) 0%, rgba(196,113,237,1) 35%, rgba(246,79,89,1) 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 	text-align: left;
 	font-size: inherit;
 	cursor: pointer;
+}
+
+.grad {
+	background: linear-gradient(120deg, rgba(18,194,233,1) 0%, rgba(196,113,237,1) 35%, rgba(246,79,89,1) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 @media all and (max-width: 720px) {
