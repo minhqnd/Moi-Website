@@ -114,11 +114,8 @@ copy {
 
 button {
 	padding: 16px 32px;
-	background: rgb(18,194,233);
-	background: -moz-linear-gradient(120deg, rgba(18,194,233,1) 0%, rgba(196,113,237,1) 35%, rgba(246,79,89,1) 100%);
+	background: rgb(0 150 255);
 	background: -webkit-linear-gradient(120deg, rgba(18,194,233,1) 0%, rgba(196,113,237,1) 35%, rgba(246,79,89,1) 100%);
-	background: linear-gradient(120deg, rgba(18,194,233,1) 0%, rgba(196,113,237,1) 35%, rgba(246,79,89,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#12c2e9",endColorstr="#f64f59",GradientType=1);
 	-webkit-background-clip: text;
 	text-align: left;
 	font-size: inherit;
