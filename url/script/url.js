@@ -1,3 +1,4 @@
+
 const urlinput = document.getElementById('urlinput')
 const custominput = document.getElementById('custominput')
 const sbtn = document.getElementById('sbtn')
@@ -8,12 +9,6 @@ const alias = document.getElementById('alias')
 const shortenedURL = document.getElementById('shortenedURL')
 const sucess = document.getElementById('sucess')
 const qr = document.getElementById('qr')
-const pushJSON = (url,data)=>{
-    const request = new XMLHttpRequest()
-    request.open('POST', url, true)
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
-    request.send(JSON.stringify(data))
-}
 
 var today = new Date();
 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -35,20 +30,6 @@ function makeid(length) {
     return result;
 }
 
-const createFrame = src=>`<a href='${src}' target='_blank'><img src='${src}' alt='QR code'></a>`
-const send_request = (url)=>{
-    const myurl = url
-    const address = `${endpoint}/${window.location.hash.substr(1)}`
-    pushJSON(address, myurl)
-    urlinput.value = ''
-    custominput.value = ''
-    status.innerHTML = 'shorten'
-    output.style.display = 'block'
-    shortenedURL.value = window.location.href
-    copyer('shortenedURL')
-    sucess.innerHTML = 'short url copied to clipboard'
-    qr.innerHTML = createFrame(`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${shortenedURL.value}`)
-}
 const sleep = ms=>new Promise(resolve=>setTimeout(resolve, ms))
 const shorturl = async()=>{
     status.innerHTML = 'shortening...'
@@ -65,16 +46,9 @@ const shorturl = async()=>{
         erbox.innerHTML = 'invalid url'
     } else {
         if (custominput.value == '') {
-            const genn = makeid(5)
-            console.log(genn);
-            await firebase.database().ref("shortenurl/" + genn).set({
-                'url': longurl,
-                'time': dateTime,
-                'click': ('0')
-            });
-			document.getElementById("qrr").src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=http://qminh.xyz/" + genn + "&choe=UTF-8";
-            out()
-            shortenedURL.value = 'http://qminh.xyz/' + genn
+            const cc = makeid(5)
+            console.log(cc);
+            send_request(cc);
             console.log('done');
         } else if (cre.test(custominput.value)) {
             firebase.database().ref("shortenurl/" + custominput.value).limitToFirst(1).once("value", snapshot=>{
@@ -86,14 +60,10 @@ const shorturl = async()=>{
                     status.innerHTML = 'shorten'
                     return true;
                 } else if (cre.test(custominput.value)) {
-                    firebase.database().ref("shortenurl/" + custominput.value).set({
-                        'url': longurl,
-                        'time': dateTime,
-                        'click': ('0')
-                    })
-					document.getElementById("qrr").src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=http://qminh.xyz/" + custominput.value + "&choe=UTF-8";
-                    out()
-                    shortenedURL.value = 'http://qminh.xyz/' + custominput.value
+                    const cc = custominput.value
+                    console.log(cc);
+                    send_request(cc)
+
                 }
             }
             )
@@ -106,16 +76,47 @@ const shorturl = async()=>{
     }
 }
 
+let send_request = async(cc)=>{
+    let longurl = geturl()
+    await firebase.database().ref("shortenurl/" + cc).set({
+        'url': longurl,
+        'time': dateTime,
+        'click': ('0')
+    });
+    output.style.display = 'block'
+    shortenedURL.value = 'https://qminh.xyz/' + cc
+    copyer('shortenedURL')
+    sucess.innerHTML = 'copied to clipboard'
+    status.innerHTML = 'Shorten'
+    document.getElementById("qrr").src = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=http://qminh.xyz/" + cc + "&choe=UTF-8";
+}
+
+let copyer = (containerid)=>{
+    let elt = document.getElementById(containerid)
+    if (document.selection) {
+        // IE
+        if (elt.nodeName.toLowerCase() === 'input') {
+            elt.select()
+            document.execCommand('copy')
+        } else {
+            let range = document.body.createTextRange()
+            range.moveToElementText(elt)
+            range.select()
+            document.execCommand('copy')
+        }
+    } else if (window.getSelection) {
+        if (elt.nodeName.toLowerCase() === 'input') {
+            elt.select()
+            document.execCommand('copy')
+        } else {
+            let range_ = document.createRange()
+            range_.selectNode(elt)
+            window.getSelection().removeAllRanges()
+            window.getSelection().addRange(range_)
+            document.execCommand('copy')
+        }
+    }
+}
+
 sbtn.addEventListener('click', shorturl)
-
-function out() {
-    output.style.display = "block";
-    status.innerHTML = 'shorten'
-    sucess.innerHTML = 'copy'
-}
-
 new ClipboardJS('.copy');
-
-function copied() {
-    sucess.innerHTML = 'copied'
-}
