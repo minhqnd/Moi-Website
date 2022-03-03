@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <head>
+        <title>focus test</title>
+       
+	   
+
+			<style >
+			.focused #focused, .blurred #blurred {
+                display: inline
+            }
+
+            .focused #blurred, .blurred #focused {
+                display: none
+            }
+
+            .focused {
+                background: white;
+                color: black;
+            }
+
+            .blurred {
+                background: black;
+                color: white;
+            } 
+			</style>
+    <body class="focused">
+        <h1>window.onfocus() and window.onblur() test</h1>
+        <p>Chuyển qua một page khác hoặc chương trình khác để làm mờ trang này</p>
+        <p>Bạn cũng có thể chỉ cần nhấn vào thanh tìm kiếm (trừ safari)</p>
+        <p>Bấm lại vào trang để focus.</p>
+        <p>Khi làm mờ, trang này sẽ có nền đen với chữ trắng.</p>
+        <p>
+            Trang web hiện tại đang <span id="focused">FOCUSED</span>
+            <span id="blurred">BLURRED</span>.
+        </p>
+		<strong>
+		<div id="outc">Bạn đã thoát 0 lần.</div> 
+		</strong>
+        <input>
+		<p>
+            <a href="https://greasyfork.org/en/scripts/429635-always-on-focus">Bấm vào đây để setup script tắt focus.</a>
+        </p>
+    </body>
+	<script>
+			const outc = document.getElementById('outc')
+			out = 0;
+            function onBlur() {
+                document.body.className = 'blurred';
+				out++;
+				outc.innerHTML = 'Bạn đã thoát ' + out + ' lần.'
+				console.log(outc);
+            }
+            ;function onFocus() {
+                document.body.className = 'focused';
+            }
+            ;
+            if (/*@cc_on!@*/
+            false) {
+                // check for Internet Explorer
+                document.onfocusin = onFocus;
+                document.onfocusout = onBlur;
+            } else {
+                window.onfocus = onFocus;
+                window.onblur = onBlur;
+            }
+        </script>
+</html>
