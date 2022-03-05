@@ -1,4 +1,5 @@
-``onblur = null;
+```js
+onblur = null;
 blurred = false;
 document.hasFocus = function () {return true;};
 window.onFocus = function () {return true;};
@@ -16,4 +17,5 @@ for (const event_name of ["visibilitychange", "webkitvisibilitychange", "blur", 
     }, true);
 }
 console.log('DISABLED!')
-//CODE BY MINHDEPTRAI``
+//CODE BY MINHDEPTRAI
+```
