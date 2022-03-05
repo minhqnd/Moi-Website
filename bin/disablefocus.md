@@ -1,3 +1,9 @@
+# Hướng dẫn
+1. Copy hết code bên dưới
+2. Bấm F12 ở web cần tắt
+3. Vào ***Console*** *(Bảng điều khiển)* 
+4. Paste :)
+
 ```js
 onblur = null;
 blurred = false;
@@ -19,3 +25,6 @@ for (const event_name of ["visibilitychange", "webkitvisibilitychange", "blur", 
 console.log("%cDISABLED!", "color: red; font-size: x-large");
 //CODE BY MINHDEPTRAI
 ```
+
+---
+Made with ❤️ by **[MINHMOIII](https://qminh.xyz/fb)**.
