@@ -16,6 +16,6 @@ for (const event_name of ["visibilitychange", "webkitvisibilitychange", "blur", 
         event.stopImmediatePropagation();
     }, true);
 }
-console.log('DISABLED!')
+console.log("%cDISABLED!", "color: red; font-size: x-large");
 //CODE BY MINHDEPTRAI
 ```
