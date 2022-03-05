@@ -15,7 +15,7 @@ Object.defineProperty(document, "msHidden", { value : false});
 Object.defineProperty(document, "webkitHidden", { value : false});
 document.onvisibilitychange = undefined;
 for (const event_name of ["visibilitychange", "webkitvisibilitychange", "blur", "mozvisibilitychange", "msvisibilitychange"]) 
-        {
+    {
     window.addEventListener(event_name, function (event) {
         if (event.type === 'blur' && event.target instanceof HTMLInputElement) {
             return;
