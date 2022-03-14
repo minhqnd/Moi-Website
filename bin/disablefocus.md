@@ -1,8 +1,8 @@
-# Hướng dẫn
+# Hướng dẫn tắt window.onblur()
 1. Copy hết code bên dưới
 2. Bấm F12 ở web cần tắt
 3. Vào ***Console*** *(Bảng điều khiển)* 
-4. Paste :)
+4. Paste và Enter :)
 
 ```js
 onblur = null;
