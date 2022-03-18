@@ -126,6 +126,7 @@ function url() {
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
+					org: bb.org
                 })
             });
             db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
