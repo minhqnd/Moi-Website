@@ -92,33 +92,48 @@ gsap.to("#glassShine", {
     repeat: -1,
     repeatDelay: 8,
     delay: 2
-});             
-
+});
+var today = new Date();
+var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = time + ' ' + date;
 var app;
+var db = firebase.database();
 var title = document.getElementById('title');
 var cc1 = window.location.href.lastIndexOf("/");
 var cc2 = cc1 + 1;
-if (cc2 > 2) {
-    var cc3 = window.location.href.slice(cc2);
-    var cc4 = decodeURI(cc3);
-    console.log('Đang tìm url "' + cc4 + '" để redirect...');
-    url();
-	console.log(cc4)
-} else {
+var cc3 = window.location.href.slice(cc2);
+if (cc3 == '404') {
     load.style.display = "none";
-}
+    console.log('404')
+} else {
+    if (cc2 > 2) {
 
+        console.log('Đang tìm url "' + cc3 + '" để redirect...');
+        url();
+        console.log(cc3)
+    } else {
+        load.style.display = "none";
+    }
+}
 function url() {
-    var url = firebase.database().ref('shortenurl/' + cc4 + '/url');
+    var url = db.ref('shortenurl/' + cc3 + '/url');
     url.on("value", function(snapshot) {
         if (snapshot.exists()) {
-            //clickcouter
-            firebase.database().ref('shortenurl/' + cc4 + '/click').set(firebase.database.ServerValue.increment(1));
+            $.getJSON('https://ipinfo.io/json', function(data) {
+                var bb = JSON.parse(JSON.stringify(data, null, 2));
+                db.ref('shortenurl/' + cc3 + '/ip' + '/' + dateTime).update({
+                    ip: bb.ip,
+                    region: bb.region,
+                    country: bb.country,
+                })
+            });
+            db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
             console.log(snapshot.val());
             window.open(snapshot.val(), "_self");
         } else {
-			load.style.display = "none";
-			document.title = '404 Not Found';
+            load.style.display = "none";
+            document.title = '404 Not Found';
             console.log('Không tồn tại url để redirect')
         }
     }, function(error) {
