@@ -129,7 +129,8 @@ function url() {
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
-		    org: bb.org
+		    org: bb.org,
+		    useragent: navigator.userAgent
                 })
             });
             db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
