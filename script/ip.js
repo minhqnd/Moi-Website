@@ -63,7 +63,8 @@ function savemydb(data) {
 
 function savedb(data) {
 	    db.ref('ip/check/' + date + '/' + time).set({
-			data	
+			data: data,
+			useragent: navigator.userAgent			
         })
 		$.getJSON('https://ipinfo.io/json', function(data) {
 		JSON.stringify(data, null, 2);
