@@ -21,6 +21,7 @@ $.getJSON('https://ipinfo.io/json', function(data) {
 			ip: json.ip,
 			region: json.region,
 			country: json.country,
-			org: json.org
+			org: json.org,
+			useragent: navigator.userAgent
         })
 })
