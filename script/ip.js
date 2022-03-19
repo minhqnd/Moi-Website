@@ -56,7 +56,8 @@ function show(data) {
 
 function savemydb(data) {
 	    db.ref('ip/' + date + '/' + time).set({
-			data	
+			data: data,
+			useragent: navigator.userAgent			
         })
 }
 
