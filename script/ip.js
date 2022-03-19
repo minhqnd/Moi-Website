@@ -65,4 +65,8 @@ function savedb(data) {
 	    db.ref('ip/check/' + date + '/' + time).set({
 			data	
         })
+		$.getJSON('https://ipinfo.io/json', function(data) {
+		JSON.stringify(data, null, 2);
+		savemydb(data);
+})
 }
