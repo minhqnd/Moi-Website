@@ -125,11 +125,11 @@ function url() {
         if (snapshot.exists()) {
             $.getJSON('https://ipinfo.io/json', function(data) {
                 var bb = JSON.parse(JSON.stringify(data, null, 2));
-                db.ref('shortenurl/' + cc3 + '/ip/' + dateTime).push({
+                db.ref('shortenurl/' + cc3 + '/ip/' + date + time).set({
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
-					org: bb.org
+		    org: bb.org
                 })
             });
             db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
