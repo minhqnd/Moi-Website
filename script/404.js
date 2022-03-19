@@ -104,9 +104,10 @@ var wait = document.getElementById('wait');
 var cc = location.pathname;
 if (cc == '/404') {
     load.style.display = "none";
+	document.title = '404 Not Found';
     console.log('404')
 } else {
-    if (cc > 2) {
+    if (cc.length > 2) {
         console.log('Đang tìm url "' + cc + '" để redirect...');
         url();
         console.log(cc)
@@ -115,6 +116,7 @@ if (cc == '/404') {
 				}, 5000);
     } else {
         load.style.display = "none";
+		document.title = '404 Not Found';
     }
 }
 function url() {
