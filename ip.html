@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/therealstromez/stromez/main/img/favicon.ico"/>
+		<link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
         <title>Get ip</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Get ip">
@@ -18,12 +19,18 @@
         <meta property="og:description" content="Get ip">
     </head>
 <body>
-<div id="ip">Your ip is: Loading...</div>
-<div id="region">Region: Loading...</div>
-<div id="country">Country: Loading...</div>
-<div id="org">Org: Loading...</div>
-<div id="time">Time check: Loading...</div>
+<div id="ip">Your ip is: Checking...</div>
+<div id="city">City: Checking...</div>
+<div id="region">Region: Checking...</div>
+<div id="country">Country: Checking...</div>
+<div id="loc">Loc: Checking...</div>
+<div id="postal">Postal: Checking...</div>
+<div id="org">Org: Checking...</div>
+<div id="timezone">Timezone: Checking...</div>
+<div id="checktime">Time check: Checking...</div>
+<div id="showmap" style ="height:300px; width:400px"></div>
 </body>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js "></script>
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js "></script>
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js "></script>
