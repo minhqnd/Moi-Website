@@ -101,17 +101,15 @@ var app;
 var db = firebase.database();
 var title = document.getElementById('title');
 var wait = document.getElementById('wait');
-var cc1 = window.location.href.lastIndexOf("/");
-var cc2 = cc1 + 1;
-var cc3 = window.location.href.slice(cc2);
-if (cc3 == '404') {
+var cc = location.pathname;
+if (cc == '404') {
     load.style.display = "none";
     console.log('404')
 } else {
     if (cc2 > 2) {
-        console.log('Đang tìm url "' + cc3 + '" để redirect...');
+        console.log('Đang tìm url "' + cc + '" để redirect...');
         url();
-        console.log(cc3)
+        console.log(cc)
 		setTimeout(function() {
 			wait.style.display = "flex";
 				}, 5000);
@@ -120,12 +118,12 @@ if (cc3 == '404') {
     }
 }
 function url() {
-    var url = db.ref('shortenurl/' + cc3 + '/url');
+    var url = db.ref('shortenurl' + cc + '/url');
     url.on("value", function(snapshot) {
         if (snapshot.exists()) {
             $.getJSON('https://ipinfo.io/json', function(data) {
                 var bb = JSON.parse(JSON.stringify(data, null, 2));
-                db.ref('shortenurl/' + cc3 + '/ip/' + date + '/' + time).set({
+                db.ref('shortenurl' + cc + '/ip/' + date + '/' + time).set({
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
@@ -133,7 +131,7 @@ function url() {
 		    useragent: navigator.userAgent
                 })
             });
-            db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
+            db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
             console.log(snapshot.val());
             window.open(snapshot.val(), "_self");
         } else {
@@ -145,4 +143,3 @@ function url() {
         console.log("Error: " + error.code);
     });
 }
-
