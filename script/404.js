@@ -134,7 +134,7 @@ function url() {
             });
             db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
             console.log(snapshot.val());
-            //window.open(snapshot.val(), "_self");
+            window.open(snapshot.val(), "_self");
         } else {
             load.style.display = "none";
             document.title = '404 Not Found';
