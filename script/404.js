@@ -100,6 +100,7 @@ var dateTime = time + ' ' + date;
 var app;
 var db = firebase.database();
 var title = document.getElementById('title');
+var wait = document.getElementById('wait');
 var cc1 = window.location.href.lastIndexOf("/");
 var cc2 = cc1 + 1;
 var cc3 = window.location.href.slice(cc2);
@@ -108,10 +109,12 @@ if (cc3 == '404') {
     console.log('404')
 } else {
     if (cc2 > 2) {
-
         console.log('Đang tìm url "' + cc3 + '" để redirect...');
         url();
         console.log(cc3)
+		setTimeout(function() {
+			wait.style.display = "flex";
+				}, 5000);
     } else {
         load.style.display = "none";
     }
@@ -131,7 +134,7 @@ function url() {
             });
             db.ref('shortenurl/' + cc3 + '/click').set(firebase.database.ServerValue.increment(1));
             console.log(snapshot.val());
-            window.open(snapshot.val(), "_self");
+            //window.open(snapshot.val(), "_self");
         } else {
             load.style.display = "none";
             document.title = '404 Not Found';
@@ -141,3 +144,4 @@ function url() {
         console.log("Error: " + error.code);
     });
 }
+
