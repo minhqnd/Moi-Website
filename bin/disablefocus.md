@@ -28,4 +28,4 @@ console.log("%cDISABLED!", "color: red; font-size: x-large");
 ```
 
 ---
-Made with ❤️ by **[MINHMOIII](https://qminh.xyz/fb)**.
+Made with [❤️](https://greasyfork.org/en/scripts/429635-always-on-focus) by **[MINHMOIII](https://qminh.xyz/fb)**.
