@@ -9,4 +9,4 @@
 ## 5. [Công thức](https://www.qminh.xyz/bin/ct)
 ### [Hóa](https://www.qminh.xyz/bin/ct#hóa)
 ### [Sinh](https://www.qminh.xyz/bin/ct#sinh)
-### [Lý](https://www.qminh.xyz/bin/ct#sinh)
+### [Lý](https://www.qminh.xyz/bin/ct#lý)
