@@ -100,7 +100,8 @@ var app;
 var db = firebase.database();
 var title = document.getElementById('title');
 var wait = document.getElementById('wait');
-var cc = location.pathname;
+//var cc = location.pathname;
+var cc = 'photo';
 if (cc == '/404') {
     load.style.display = "none";
 	document.title = '404 Not Found';
@@ -123,22 +124,21 @@ function url() {
     var url = db.ref('shortenurl' + cc + '/url');
     url.on("value", function(snapshot) {
         if (snapshot.exists()) {
-			db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
-		    useragent: navigator.userAgent
-			})
             $.getJSON('https://ipinfo.io/json', function(data) {
                 var bb = JSON.parse(JSON.stringify(data, null, 2));
                 db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
-		    org: bb.org,
-		    useragent: navigator.userAgent
+					org: bb.org,
                 })
             });
             db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
+			db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
+		    useragent: navigator.userAgent
+			})
             console.log(snapshot.val());
-            window.open(snapshot.val(), "_self");
+            //window.open(snapshot.val(), "_self");
         } else {
             load.style.display = "none";
             document.title = '404 Not Found';
