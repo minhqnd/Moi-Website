@@ -36,6 +36,7 @@
 ![Đại](ct_files/dai2.jpg)
 ![Đại](ct_files/dai3.jpg)
 ![Đại](ct_files/dai4.jpg)
+![Đại](ct_files/dai5.jpg)
 
 ## Hình
 ![Hình](ct_files/hinh1.jpg)
