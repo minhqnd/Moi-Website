@@ -96,7 +96,6 @@ gsap.to("#glassShine", {
 var today = new Date();
 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var dateTime = time + ' ' + date;
 var app;
 var db = firebase.database();
 var title = document.getElementById('title');
@@ -120,12 +119,16 @@ if (cc == '/404') {
     }
 }
 function url() {
+	var times = time;
     var url = db.ref('shortenurl' + cc + '/url');
     url.on("value", function(snapshot) {
         if (snapshot.exists()) {
+			db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
+		    useragent: navigator.userAgent
+			})
             $.getJSON('https://ipinfo.io/json', function(data) {
                 var bb = JSON.parse(JSON.stringify(data, null, 2));
-                db.ref('shortenurl' + cc + '/ip/' + date + '/' + time).set({
+                db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
