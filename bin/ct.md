@@ -29,4 +29,22 @@
 ![Lý](ct_files/ly7.jpg)
 ![Lý](ct_files/ly8.jpg)
 
+--------------------- 
+## Toán
+### Đại
+![Đại](ct_files/dai1.jpg)
+![Đại](ct_files/dai2.jpg)
+![Đại](ct_files/dai3.jpg)
+![Đại](ct_files/dai4.jpg)
+
+## Hình
+![Hình](ct_files/hinh1.jpg)
+![Hình](ct_files/hinh2.jpg)
+![Hình](ct_files/hinh3.jpg)
+![Hình](ct_files/hinh4.jpg)
+![Hình](ct_files/hinh5.jpg)
+![Hình](ct_files/hinh6.jpg)
+![Hình](ct_files/hinh7.jpg)
+
+
 
