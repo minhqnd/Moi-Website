@@ -100,8 +100,7 @@ var app;
 var db = firebase.database();
 var title = document.getElementById('title');
 var wait = document.getElementById('wait');
-//var cc = location.pathname;
-var cc = 'photo';
+var cc = location.pathname;
 if (cc == '/404') {
     load.style.display = "none";
 	document.title = '404 Not Found';
@@ -130,7 +129,7 @@ function url() {
                     ip: bb.ip,
                     region: bb.region,
                     country: bb.country,
-					org: bb.org,
+		    org: bb.org,
                 })
             });
             db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
@@ -138,7 +137,7 @@ function url() {
 		    useragent: navigator.userAgent
 			})
             console.log(snapshot.val());
-            //window.open(snapshot.val(), "_self");
+            window.open(snapshot.val(), "_self");
         } else {
             load.style.display = "none";
             document.title = '404 Not Found';
