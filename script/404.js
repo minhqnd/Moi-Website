@@ -14,8 +14,9 @@ var cc = location.pathname;
     } else {
         if (location.pathname.split("/")[1] == 'd') {
             var cc = location.pathname.split("/")[2];
-            window.open('"http://qminh.xyz/download?id=' +cc+ '"', "_self");
-            console.log('"http://qminh.xyz/download?id=' +cc+ '"')
+			var url = 'http://qminh.xyz/download?id='+cc;
+			console.log(url)
+            window.open(url, "_self");
         } else {
             if (cc.length > 2) {
                 console.log('Đang tìm url "' + cc + '" để redirect...');
