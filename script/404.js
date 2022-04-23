@@ -101,49 +101,64 @@ var db = firebase.database();
 var title = document.getElementById('title');
 var wait = document.getElementById('wait');
 var cc = location.pathname;
+// var cc = '/fb'
 if (cc == '/404') {
     load.style.display = "none";
-	document.title = '404 Not Found';
+    document.title = '404 Not Found';
     console.log('404')
 } else {
-    if (cc.length > 2) {
-        console.log('Đang tìm url "' + cc + '" để redirect...');
-        url();
-        console.log(cc)
-		setTimeout(function() {
-			wait.style.display = "flex";
-				}, 5000);
+    if (location.pathname.split("/")[1] == 'd') {
+        console.log('cc')
+        var cc = location.pathname.split("/")[2];
+        url(true);
     } else {
-        load.style.display = "none";
-		document.title = '404 Not Found';
+        if (cc.length > 2) {
+            console.log('Đang tìm url "' + cc + '" để redirect...');
+            url(false);
+            console.log(cc)
+            setTimeout(function () {
+                wait.style.display = "flex";
+            }, 5000);
+        } else {
+            load.style.display = "none";
+            document.title = '404 Not Found';
+        }
     }
 }
-function url() {
-	var times = time;
-    var url = db.ref('shortenurl' + cc + '/url');
-    url.on("value", function(snapshot) {
+
+function url(d) {
+    var times = time;
+    if (d) {
+        var nn = 'upload'
+    } else {
+        var nn = 'shortenurl'
+    }
+    var url = db.ref(nn + cc + '/url');
+    url.on("value", function (snapshot) {
         if (snapshot.exists()) {
-            $.getJSON('https://ipinfo.io/json', function(data) {
+            $.getJSON('https://ipinfo.io/json', function (data) {
                 var bb = JSON.parse(JSON.stringify(data, null, 2));
-                db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
-                    ip: bb.ip,
-                    region: bb.region,
-                    country: bb.country,
-		    org: bb.org,
-                })
+                send_request(nn, bb, times, snapshot);
             });
-            db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
-			db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
-		    useragent: navigator.userAgent
-			})
-            console.log(snapshot.val());
-            window.open(snapshot.val(), "_self");
         } else {
             load.style.display = "none";
             document.title = '404 Not Found';
             console.log('Không tồn tại url để redirect')
         }
-    }, function(error) {
+    }, function (error) {
         console.log("Error: " + error.code);
     });
+}
+
+let send_request = async(nn, bb, times, snapshot) => {
+    await db.ref(nn + cc + '/ip/' + date + '/' + times).set({
+        ip: bb.ip,
+        region: bb.region,
+        country: bb.country,
+        org: bb.org,
+        ug: navigator.userAgent
+    })
+    db.ref(nn + cc + '/click').set(firebase.database.ServerValue.increment(1));
+    console.log(snapshot.val());
+    window.open(snapshot.val(), "_self");
 }
