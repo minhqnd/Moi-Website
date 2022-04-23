@@ -7,7 +7,7 @@ var bonkhongbon = document.getElementById('bonkhongbon');
 let params = new URLSearchParams(location.search);
 var id = params.get('id');
 
-if (id != null) {
+if (id != '') {
     firebase.database().ref("upload/" + id).once("value", snapshot => {
         if (snapshot.exists()) {
 			var name = snapshot.val().name;
