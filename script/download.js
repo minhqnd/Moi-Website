@@ -1,4 +1,3 @@
-firebase.initializeApp(config);
 var namefile = document.getElementById('namefile');
 var typefile = document.getElementById('typefile');
 var sizefile = document.getElementById('sizefile');
