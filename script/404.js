@@ -36,7 +36,7 @@ function url(d) {
     var url = db.ref('shortenurl' + cc + '/url');
     url.on("value", function (snapshot) {
         if (snapshot.exists()) {
-            // window.open(snapshot.val(), "_self");
+            window.open(snapshot.val(), "_self");
             console.log(snapshot.val())
             db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
                 ug: navigator.userAgent,
