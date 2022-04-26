@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>2FA Authenticator | TOTP GEN</title>
+	<meta charset='utf-8'>
+	<link rel="icon" href="./favicon.ico"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+	<meta name="description" content="TOTP Generator">
+	<meta itemprop="name" content="2FA Authenticator GEN">
+	<meta itemprop="description" content="TOTP Generator">
+	<meta name="theme-color" content="#ffffff">
+	<!-- OpenGraph -->
+	<meta property="og:site_name" content="2FA Authenticator | TOTP GEN">
+	<meta property="og:url" content="https://qminh.xyz/2fa">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="2FA Authenticator GEN">
+	<meta property="og:description" content="TOTP Generator">
+    </head>
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a>
+                        <h3>2FA Authenticator</h3>
+                    </a>
+                </div>
+                <div id="updatingIn">00</div>
+            </div>
+        </div>
+        <hr/>
+        <div class="container">
+            <div class="row">
+                <textarea id="secret" placeholder="BK5V TVQ7 D2RB..." rows="10" style="width: 400px;"></textarea>
+                <b>* 2FA Sercet</b>
+            </div>
+            <div class="row">
+                <div class="text-left"></div>
+            </div>
+            <div class="row">
+                <textarea id="otp" placeholder="ABC|2FA Code" rows="10" style="width: 400px;"></textarea>
+                <b>* 2FA Code </b>
+            </div>
+            <div id="error"></div>
+        </div>
+    </div>
+    <div>©Minhmoiii - 2022</div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.3.1/sha.js'></script>
+<script>
+    var secret = document.querySelector("#secret")
+    var otp = document.querySelector("#otp")
+
+    function dec2hex(s) {
+        return (s < 15.5 ? "0" : "") + Math.round(s).toString(16);
+    }
+
+    function hex2dec(s) {
+        return parseInt(s, 16);
+    }
+
+    function base32tohex(base32) {
+        var base32chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+        var bits = "";
+        var hex = "";
+
+        for (var i = 0; i < base32.length; i++) {
+            var val = base32chars.indexOf(base32.charAt(i).toUpperCase());
+            bits += leftpad(val.toString(2), 5, "0");
+        }
+
+        for (var i = 0; i + 4 <= bits.length; i += 4) {
+            var chunk = bits.substr(i, 4);
+            hex = hex + parseInt(chunk, 2).toString(16);
+        }
+        return hex;
+    }
+
+    function leftpad(str, len, pad) {
+        if (len + 1 >= str.length) {
+            str = Array(len + 1 - str.length).join(pad) + str;
+        }
+        return str;
+    }
+    var cc = secret.value.match(/[^\r\n]+/g)
+
+    function totp(sk) {
+        var key = base32tohex(sk);
+        var epoch = Math.round(new Date().getTime() / 1000.0);
+        var time = leftpad(dec2hex(Math.floor(epoch / 30)), 16, "0");
+        let success = true;
+        try {
+            var shaObj = new jsSHA("SHA-1","HEX");
+            shaObj.setHMACKey(key, "HEX");
+            shaObj.update(time);
+            var hmac = shaObj.getHMAC("HEX");
+        } catch (err) {
+            success = false;
+        }
+
+        if (success) {
+            var offset = hex2dec(hmac.substring(hmac.length - 1));
+            var otp = (hex2dec(hmac.substr(offset * 2, 8)) & hex2dec("7fffffff")) + "";
+            otp = otp.substr(otp.length - 6, 6);
+            return sk + '|' + otp;
+        } else {
+            return "Key must be in byte increments";
+        }
+    }
+
+    function timer() {
+        var epoch = Math.round(new Date().getTime() / 1000.0);
+        var countDown = 30 - epoch % 30;
+        if (epoch % 30 == 0)
+            updatetotp()
+
+        setProgress = percent=>{
+            document.querySelector("#updatingIn").innerHTML = percent;
+        }
+        ;
+
+        setProgress(countDown);
+    }
+
+    function updatetotp() {
+        if (secret.value != '') {
+            var input = secret.value.match(/[^\r\n]+/g)
+            var output = []
+            input.forEach(function(sc) {
+                output.push(totp(sc))
+            });
+            let text = output.join("\n");
+            document.querySelector("#otp").value = (text);
+        } else {
+            secret.value = '';
+        }
+    }
+    ;(function() {
+        secret.onkeyup = _=>{
+            updatetotp()
+        }
+        setInterval(timer, 1000);
+    }
+    )();
+</script>
+</html>
