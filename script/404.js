@@ -37,7 +37,8 @@ function url(d) {
     url.on("value", function (snapshot) {
         if (snapshot.exists()) {
             window.open(snapshot.val(), "_self");
-            console.log(snapshot.val())
+            console.log(snapshot.val());
+db.ref(nn + cc + '/click').set(firebase.database.ServerValue.increment(1));
             db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
                 ug: navigator.userAgent,
 				zone: Intl.DateTimeFormat().resolvedOptions().timeZone
