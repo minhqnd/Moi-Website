@@ -36,13 +36,13 @@ function url(d) {
     var url = db.ref('shortenurl' + cc + '/url');
     url.on("value", function (snapshot) {
         if (snapshot.exists()) {
-            window.open(snapshot.val(), "_self");
             console.log(snapshot.val());
 db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
-            db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
-                ug: navigator.userAgent,
-				zone: Intl.DateTimeFormat().resolvedOptions().timeZone
-            })
+window.open(snapshot.val(), "_self");
+            //db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
+             //   ug: navigator.userAgent,
+		//		zone: Intl.DateTimeFormat().resolvedOptions().timeZone
+          //  })
         } else {
             load.style.display = "none";
             document.title = '404 Not Found';
