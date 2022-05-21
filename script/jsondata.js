@@ -2,7 +2,7 @@ function jsonViewer(json, collapsible = false) {
     var TEMPLATES = {
         item: '<div class="json__item"><div class="json__key">%KEY%</div><div class="json__value json__value--%TYPE%">%VALUE%</div></div>',
         itemCollapsible: '<label class="json__item json__item--collapsible"><input type="checkbox" class="json__toggle"/><div class="json__key">%KEY%</div><div class="json__value json__value--type-%TYPE%">%VALUE%</div>%CHILDREN%</label>',
-        itemCollapsibleOpen: '<label class="json__item json__item--collapsible"><input type="checkbox" class="json__toggle"/><div class="json__key">%KEY%</div><div class="json__value json__value--type-%TYPE%">%VALUE%</div>%CHILDREN%</label>'
+        itemCollapsibleOpen: '<label class="json__item json__item--collapsible"><input type="checkbox" checked class="json__toggle"/><div class="json__key">%KEY%</div><div class="json__value json__value--type-%TYPE%">%VALUE%</div>%CHILDREN%</label>'
     };
 
     function createItem(key, value, type) {
@@ -79,9 +79,10 @@ function jsonViewer(json, collapsible = false) {
 var el = document.querySelector('.target');
 let params = new URLSearchParams(location.search);
 var key = params.get('key');
+var open = params.get('open');
 
 $.getJSON('https://stromez-ed239-default-rtdb.asia-southeast1.firebasedatabase.app/'+key, function (data) {
-    el.innerHTML = jsonViewer(data, true)
+    el.innerHTML = jsonViewer(data, open)
 }).fail(function (error) {
     el.innerHTML = '<div class="json"><label class="json__item json__item--collapsible"><div class="json__key">ERROR</div><div class="json__value json__value--type-object">null</div></label></div>'
 });
