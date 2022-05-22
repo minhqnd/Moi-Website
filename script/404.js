@@ -5,7 +5,7 @@ var app;
 var db = firebase.database();
 var title = document.getElementById('title');
 var wait = document.getElementById('wait');
-var cc = location.pathname;
+var cc = '/d/cccc'
 
     if (cc == '/404') {
         load.style.display = "none";
@@ -14,6 +14,7 @@ var cc = location.pathname;
     } else {
         if (location.pathname.split("/")[1] == 'd') {
             var cc = location.pathname.split("/")[2];
+			changetitle('Download files...')
 			var url = 'http://qminh.xyz/download?id='+cc;
 			console.log(url)
             window.open(url, "_self");
@@ -27,6 +28,7 @@ var cc = location.pathname;
             } else {
                 load.style.display = "none";
                 document.title = '404 Not Found';
+				changetitle('404 Not Found')
             }
         }
     }
@@ -36,14 +38,17 @@ function url(d) {
     var url = db.ref('shortenurl' + cc + '/url');
     url.on("value", function (snapshot) {
         if (snapshot.exists()) {
+			var url = new URL(snapshot.val());
+			changetitle('Redirect to ' + url.hostname + '...')
             console.log(snapshot.val());
-db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
-window.open(snapshot.val(), "_self");
+			db.ref('shortenurl' + cc + '/click').set(firebase.database.ServerValue.increment(1));
+			window.open(snapshot.val(), "_self");
             //db.ref('shortenurl' + cc + '/ip/' + date + '/' + times).set({
              //   ug: navigator.userAgent,
 		//		zone: Intl.DateTimeFormat().resolvedOptions().timeZone
           //  })
         } else {
+			changetitle('404 Not Found')
             load.style.display = "none";
             document.title = '404 Not Found';
             console.log('Không tồn tại url để redirect')
@@ -51,6 +56,11 @@ window.open(snapshot.val(), "_self");
     }, function (error) {
         console.log("Error: " + error.code);
     });
+}
+
+function changetitle(tit) {
+	document.querySelector('meta[name="title"]').content = tit;
+	document.querySelector('meta[property="og:title"]').content = tit;
 }
 
 // let send_request = async(nn, bb, times, snapshot) => {
