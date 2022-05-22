@@ -5,7 +5,8 @@ var app;
 var db = firebase.database();
 var title = document.getElementById('title');
 var wait = document.getElementById('wait');
-var cc = '/d/cccc'
+var cc = location.pathname;
+// var cc = '/d/cccc'
 
     if (cc == '/404') {
         load.style.display = "none";
