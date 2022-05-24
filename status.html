@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>status</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div id='index'>
+<span>Status: </span>
+<span id='status'></span>
+<div>
+	<button id='btn'>Change</button>
+</div>
+</div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+<script src="./script/data.js"></script>
+<script>
+let params = new URLSearchParams(location.search);
+var change = params.get('change');
+var img = params.get('img');
+var sts = document.getElementById('status')
+var index = document.getElementById('index')
+
+document.querySelector('#btn').addEventListener('click', () => {
+	firebase.database().ref("status").once("value", snapshot => {
+		if (snapshot.val()) {
+		firebase.database().ref("/").update({
+            'status' : false
+        });
+		} else {
+		firebase.database().ref("/").update({
+			'status' : true
+        });
+		}
+	})
+})
+
+if (change) {
+firebase.database().ref("status").on("value", snapshot => {
+	sts.innerHTML = snapshot.val();
+})
+} else if (img) {
+	firebase.database().ref("status").once("value", snapshot => {
+		if (snapshot.val()) {
+			document.write('<img src="https://mms.businesswire.com/media/20220419005194/en/1423701/22/True_Logo.jpg"></img>')
+			} else {
+			document.write('<img src="https://i.ytimg.com/vi/2fwJ3DBaOGI/maxresdefault.jpg"></img>')
+			}
+	})
+} else {
+firebase.database().ref("status").once("value", snapshot => {
+	document.write(snapshot.val());
+})
+}
+</script>
+</html>
