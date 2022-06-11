@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="has-background-black-ter" lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no, viewport-fit=cover">
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>Auth</title>
+        <link rel="shortcut icon" href="./favicon.ico">
+        <link rel="icon" type="image/png" href="./favicon.png">
+        <link href="./style/auth.css" rel="stylesheet">
+    </head>
+    <body class="has-text-lighter">
+        <div id="app">
+            <div>
+                <main class="main-section">
+                    <div class="columns is-centered">
+                        <div class="form-column column is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-third-fullhd">                            
+                            <!-- main -->
+                            <div id='main'>
+							<h1 id='title' class="title has-text-grey-dark">404. That’s an error.</h1>
+                                <div id='title-help' class="block">The requested URL /auth was not found on this server.<br>That’s all we know.</div>
+                            </div>
+                            <!-- reset pass -->
+                            <div id='resetPassword' style='display:none;'>
+								<h1 class="title has-text-grey-dark">Reset Password</h1>
+                                <div class="field">
+                                    <label class="label">New password</label>
+                                    <div class="control">
+                                        <input id="password" placeholder="" type="password" class="input">
+                                    </div>
+                                </div>                            
+                                <div class="field">
+                                    <label class="label">Confirm new password</label>
+                                    <div class="control">
+                                        <input id="re-password" placeholder="" type="password" class="input">
+                                    </div>
+                                </div>
+								<p id="password-help" class="help is-danger help-for-file"></p>
+								<div class="field is-grouped">
+								<div class="control">
+                                    <button id='reset' type="submit" class="button is-link">Reset password</button>
+                                </div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="./script/auth.js"></script>
+</html>
