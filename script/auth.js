@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var lang = params.get('lang') || 'en';
     var apiKey = params.get('apiKey');
     var config = {
-        'apiKey': apiKey;
+        'apiKey': apiKey
     };
     var app = firebase.initializeApp(config);
     var auth = app.auth();
