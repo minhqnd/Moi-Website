@@ -24,8 +24,13 @@ function getdiem() {
 	setTimeout(function() {
 	var njson = new Object();
 	njson.sbd = document.getElementsByTagName('input')[5].value;
-	njson.diem = (($('.el-table_1_column_3 > div').eq(1).html()*1)+($('.el-table_1_column_3 > div').eq(2).html()*1))*2+($('.el-table_1_column_3 > div').eq(3).html()*1)+(document.getElementsByTagName('p')[3].innerHTML*1)
-	console.log(sbd_start + ': ' + njson.diem)
+	if ($('.fade').eq(1).html()) {
+	$('.btn-secondary').click();
+	njson.diem = null
+	} else {
+	njson.diem = (($('.el-table_1_column_3 > div').eq(1).html()*1)+($('.el-table_1_column_3 > div').eq(2).html()*1))*2+($('.el-table_1_column_3 > div').eq(3).html()*1)+(document.getElementsByTagName('p')[3].innerHTML*1);
+	};
+	console.log(sbd_start + ': ' + njson.diem);
 	outjson.push(njson);
     sbd_start++;
     if (sbd_start <= sbd_end) {
@@ -33,7 +38,7 @@ function getdiem() {
     } else {
 		console.log(JSON.stringify(outjson));
 	}
-  }, 1500) //THOI GIAN DELAY
+  }, 1500)
 };
 
 function start() {
@@ -44,7 +49,7 @@ function start() {
 	setTimeout(function() {
 		getdiem();
 	}, 2000);
-}
+};
 
 start();
 ```
