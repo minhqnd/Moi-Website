@@ -12,7 +12,7 @@ document.body.appendChild(i);
 window.console = i.contentWindow.console;
 
 var sbd_start = 330001;
-var sbd_end = 330565;
+var sbd_end = 330005;
 var outjson = new Array();
 let inputEvent = new Event('input',{bubbles:true,cancelable: true});
 
@@ -26,11 +26,17 @@ function getdiem() {
 	njson.sbd = document.getElementsByTagName('input')[5].value;
 	if ($('.fade').eq(1).html()) {
 	$('.btn-secondary').click();
-	njson.diem = null
+	njson.toan = null
+	njson.van = null
+	njson.anh = null
+	njson.tong = null
 	} else {
-	njson.diem = (($('.el-table_1_column_3 > div').eq(1).html()*1)+($('.el-table_1_column_3 > div').eq(2).html()*1))*2+($('.el-table_1_column_3 > div').eq(3).html()*1)+(document.getElementsByTagName('p')[3].innerHTML*1);
+	njson.toan = $('.el-table_1_column_3 > div').eq(1).html()*1
+	njson.van = $('.el-table_1_column_3 > div').eq(2).html()*1
+	njson.anh = $('.el-table_1_column_3 > div').eq(3).html()*1
+	njson.tong = (njson.toan+njson.van)*2+njson.anh+(document.getElementsByTagName('p')[3].innerHTML*1);
 	};
-	console.log(sbd_start + ': ' + njson.diem);
+	console.log(sbd_start + ': TONG: ' + njson.tong + ' | ' + njson.toan + ' | ' + njson.van + ' | ' + njson.anh);
 	outjson.push(njson);
     sbd_start++;
     if (sbd_start <= sbd_end) {
