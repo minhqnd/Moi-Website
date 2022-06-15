@@ -2,6 +2,7 @@
 
 By [Minhmoiii](https://qminh.xyz/fb) with [this tool](http://qminh.xyz/getdiem) ♥️
 
+Download [Excel (.xlsx) format](http://qminh.xyz/d/QF9MS)
 
 | SBD    | TOAN | VAN  | ANH  | TONG  |
 |--------|------|------|------|-------|
