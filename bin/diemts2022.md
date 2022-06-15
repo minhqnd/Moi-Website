@@ -1,3 +1,8 @@
+# Điểm tuyển sinh 2022 HQV
+
+By [Minhmoiii](https://qminh.xyz/fb) with [this tool](http://qminh.xyz/getdiem) ♥️
+
+
 | SBD    | TOAN | VAN  | ANH  | TONG  |
 |--------|------|------|------|-------|
 | 330001 | 5.5  | 6.5  | 4.25 | 28.25 |
