@@ -12,7 +12,7 @@ document.body.appendChild(i);
 window.console = i.contentWindow.console;
 
 var sbd_start = 330001;
-var sbd_end = 330005;
+var sbd_end = 330565;
 var outjson = new Array();
 let inputEvent = new Event('input',{bubbles:true,cancelable: true});
 
@@ -44,7 +44,7 @@ function getdiem() {
     } else {
 		console.log(JSON.stringify(outjson));
 	}
-  }, 1500)
+  }, 1500) // thoi gian delay
 };
 
 function start() {
