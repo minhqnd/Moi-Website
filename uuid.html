@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>GUID generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma-checkradio@0.1.5/bulma-checkradio.min.css'><link rel="stylesheet" href="./style/uuid.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="GUIDGenerator">
+  <div class="columns is-centered ">
+    <div style="min-width:625px;" class="column is-5 is-vertical-centered">
+      <div class="field has-addons">
+        <button id="generateButton" v-on:click.prevent="createNewUUID()" class="control button is-medium is-primary is-rounded">
+          <span class="underlined">G</span>enerate
+      </button>
+        <a id="copyToClipboard" v-on:click.prevent="copyToClipboard" class="button control is-medium">
+    <span class="icon">
+      <i class="fa fa-clipboard"></i>
+    </span>
+  </a>
+        <div class="control" style="width:100%">
+          <input v-on:focus="$event.target.select()" ref="generator" v-model="shownUUID" id="generator" class="input is-medium is-rounded" type="text" readonly placeholder="GUID goes here">
+        </div>
+
+      </div>
+       <p style="margin-bottom:10px" class="has-text-grey-light has-text-centered is-size-7">Supports keyboard shortcuts: e.g: Press "c" to copy the current <br> or "g" to generate new</p>
+      <div class="field is-grouped is-grouped-centered">
+        <input class="is-checkradio" id="hyphenCheck" v-model="withHyphen" type="checkbox">
+        <label for="hyphenCheck" class="control checkbox">
+    <span class="underlined">H</span>yphens
+  </label>
+        <input class="is-checkradio" id="upperCheck" v-model="isUpper" type="checkbox">
+        <label for="upperCheck" class="control checkbox">
+  <span class="underlined">U</span>pperCase
+</label>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js'></script>
+<script src='https://unpkg.com/buefy'></script><script  src="./script/uuid.js"></script>
+
+</body>
+</html>
