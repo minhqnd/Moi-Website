@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Get YouTube Video Thumbnail Image</title>
+<meta name="Description" content="A simple tool that allows you to download the image thumbnail of any YouTube video by entering the URL of the video.  Simple elegant tools." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Get YouTube Video Thumbnail Image"/>
+<meta property="og:image" content="http://www.get-youtube-thumbnail.com/get-youtube-image.png"/>
+<meta property="og:site_name" content="Get YouTube Video Thumbnail Image"/>
+<meta property="og:description" content="Download the default thumbnail image of any YouTube Video with this simple and elegant tool."/>
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+<h1>Get YouTube Video Thumbnail Image</h1>
+<p>To get the video thumbnail of any YouTube Video<br />
+    enter the regular URL of the video into the textbox below.</p>
+<p>Your URL should look like this:<br />
+    <em>http://www.youtube.com/watch?v=erLk59H86ww</em></p>
+<p>
+    <input type="text" class="text" id="youtubeLink" size="60" />
+</p>
+<p>
+    <button id="get" class="button">
+    Get YouTube Thumbnail
+    </button>
+</p>
+<div id="msg"></div>
+<script>
+
+
+$("#get").click(function () {
+   var ytl = $( "#youtubeLink" ).val();
+   var yti = ytl.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+   $( "#msg" ).html( "<h1>YouTube Thumbnail</h1><p><img src=\"https://i3.ytimg.com/vi/" + yti[1] + "/maxresdefault.jpg\" class=\"image\" /></p><p><img src=\"https://i3.ytimg.com/vi/" + yti[1] + "/hqdefault.jpg\" class=\"image\" /></p><h2>Image URL:</h2><br /><input name=\"imageURL\" id=\"copyimageURL\" class=\"text\" size=\"70\" type=\"text\" value=\"https://i3.ytimg.com/vi/"+ yti[1] + "/maxresdefault.jpg\" onclick=\"this.select()\" readonly /><br /><input name=\"imageURL\" id=\"copyimageURL\" class=\"text\" size=\"70\" type=\"text\" value=\"http://i3.ytimg.com/vi/"+ yti[1] + "/hqdefault.jpg\" onclick=\"this.select()\" readonly /><p>Right/Ctrl Click the image to download.  Highlight the URL above and copy to your clipboard.</p>" );
+   
+});
+
+
+$("#copyimageURL").click(function () {
+   $(this).select();
+});
+
+</script>
+</body>
+</html>
