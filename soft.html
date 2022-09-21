@@ -55,11 +55,23 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"></script>
 <script>
-    console.log('Start: '+ Date())
+    function gettime() {
+        var d = new Date();
+        d.getHours();
+        d.getMinutes();
+        d.getSeconds();
+        return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds()
+    }
+
+    console.log('Start: ' + gettime())
 
 
 
-    $("input").on("keyup change", function (e) {
+
+
+
+
+    $("textarea").on("keyup", function (e) {
         console.log('cc')
     })
 </script>
