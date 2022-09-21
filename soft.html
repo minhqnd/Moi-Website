@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lọc danh sách</title>
+    <meta charset='utf-8'>
+    <link rel="icon" href="./favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+    <meta name="description" content="TOTP Generator">
+    <meta itemprop="name" content="2FA Authenticator GEN">
+    <meta itemprop="description" content="TOTP Generator">
+    <meta name="theme-color" content="#ffffff">
+    <!-- OpenGraph -->
+    <meta property="og:site_name" content="2FA Authenticator | TOTP GEN">
+    <meta property="og:url" content="https://qminh.xyz/2fa">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="2FA Authenticator GEN">
+    <meta property="og:description" content="TOTP Generator">
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a>
+                        <h3>Lọc danh sách</h3>
+                    </a>
+                </div>
+                <!-- <div id="updatingIn">00</div> -->
+            </div>
+        </div>
+        <hr />
+        <div class="container">
+            <div class="row">
+                <textarea id="secret" placeholder="..." rows="10" style="width: 400px;"></textarea>
+                <b>* Danh sách đủ</b>
+            </div>
+            <div class="row">
+                <div class="text-left"></div>
+            </div>
+            <div class="row">
+                <textarea id="otp" placeholder="..." rows="10" style="width: 400px;"></textarea>
+                <b>* Danh sách cần lọc</b>
+            </div>
+            <div class="row">
+                <textarea id="otp" placeholder="..." rows="10" style="width: 400px;"></textarea>
+                <b>Kết quả</b>
+            </div>
+            <div id="error"></div>
+        </div>
+    </div>
+    <div>©Minhmoiii - 2022</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"></script>
+<script>
+    console.log('Start: '+ Date())
+
+
+
+    $("input").on("keyup change", function (e) {
+        console.log('cc')
+    })
+</script>
+
+</html>
