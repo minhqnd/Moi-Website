@@ -34,18 +34,18 @@
         <hr />
         <div class="container">
             <div class="row">
-                <textarea id="secret" placeholder="..." rows="10" style="width: 400px;"></textarea>
+                <textarea id="danhsachdu" placeholder="input1" rows="10" style="width: 400px;"></textarea>
                 <b>* Danh sách đủ</b>
             </div>
             <div class="row">
                 <div class="text-left"></div>
             </div>
             <div class="row">
-                <textarea id="otp" placeholder="..." rows="10" style="width: 400px;"></textarea>
-                <b>* Danh sách cần lọc</b>
+                <textarea id="danhsachloc" placeholder="input2" rows="10" style="width: 400px;"></textarea>
+                <b>* Danh sách lọc</b>
             </div>
             <div class="row">
-                <textarea id="otp" placeholder="..." rows="10" style="width: 400px;"></textarea>
+                <textarea id="output" placeholder="output" rows="10" style="width: 400px;"></textarea>
                 <b>Kết quả</b>
             </div>
             <div id="error"></div>
@@ -65,14 +65,36 @@
 
     console.log('Start: ' + gettime())
 
+    function run() {
+        if ($('#danhsachloc').val() != '') {
+            var input = $('#danhsachdu').val().match(/[^\r\n]+/g)
+            var output = []
+            input.forEach(function (cc) {
+                output.push(check(cc))
+            });
+            let text = output.join("");
+            $('#output').val(text);
+        } else {
+            $('#danhsachloc').val('')
+        }
+    }
 
+    function check(check) {
+        var input1 = check.toLowerCase()
+        var input2 = $('#danhsachloc').val().toLowerCase()
+        if (input2.indexOf(input1) !== -1) {
+            // return check + ' [Có]'
+            return ''
+        } else {
+            return check + ' [Thiếu]\n'
+            // return
+        }
+    }
 
-
-
-
-
+    $('#danhsachdu').val()
     $("textarea").on("keyup", function (e) {
         console.log('cc')
+        run()
     })
 </script>
 
