@@ -34,7 +34,7 @@ if (id != '') {
 function bkb() {
     bonkhongbon.style.display = "block";
     document.querySelector('#bkb').addEventListener('click', () => {
-        window.open('http://qminh.xyz/upload', "_self");
+        window.open('./upload', "_self");
     })
 }
 

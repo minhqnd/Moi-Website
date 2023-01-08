@@ -16,7 +16,7 @@ var cc = location.pathname;
         if (location.pathname.split("/")[1] == 'd') {
             var cc = location.pathname.split("/")[2];
 			changetitle('Download files...')
-			var url = 'http://qminh.xyz/download?id='+cc;
+			var url = './download?id='+cc;
 			console.log(url)
             window.open(url, "_self");
         } else {

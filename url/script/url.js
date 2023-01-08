@@ -84,7 +84,7 @@ let send_request = async(cc)=>{
         'click': ('0')
     });
     output.style.display = 'block'
-    shortenedURL.value = 'https://qminh.xyz/' + cc
+    shortenedURL.value = 'https://quangminh.xyz/' + cc
     copyer('shortenedURL')
     sucess.innerHTML = 'copied to clipboard'
     status.innerHTML = 'Shorten'
