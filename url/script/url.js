@@ -84,11 +84,11 @@ let send_request = async(cc)=>{
         'click': ('0')
     });
     output.style.display = 'block'
-    shortenedURL.value = 'https://quangminh.xyz/' + cc
+    shortenedURL.value = 'https://minhquang.xyz/' + cc
     copyer('shortenedURL')
     sucess.innerHTML = 'copied to clipboard'
     status.innerHTML = 'Shorten'
-    document.getElementById("qrr").src = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=http://quangminh.xyz/" + cc + "&choe=UTF-8";
+    document.getElementById("qrr").src = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=http://minhquang.xyz/" + cc + "&choe=UTF-8";
 }
 
 let copyer = (containerid)=>{

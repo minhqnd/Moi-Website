@@ -36,7 +36,7 @@ function handleFileSelect(evt) {
 	            var id = makeid(5);
 	            upload.style.display = "none";
 	            link.style.display = "block";
-	            linkdown.value = 'http://quangminh.xyz/d/' + id;
+	            linkdown.value = 'http://minhquang.xyz/d/' + id;
 	            send_request(id, cc.metadata, url, date, file.name);
 	        });
 	    });
