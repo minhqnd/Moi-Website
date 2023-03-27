@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm câu hỏi trắc nghiệm</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Tìm câu hỏi trắc nghiệm</h1>
+    <div class="input">
+      <input type="text" id="question-input" placeholder="Nhập câu hỏi trắc nghiệm...">
+      <button id="search-btn" onclick="searchQuestion()">Tìm kiếm</button>
+    </div>
+    <div id="loading">Loading...</div>
+    <div id="result">
+      <div id="hoidap247">
+        <h2>HoiDap247</h2>
+        <div class="question-list"></div>
+      </div>
+      <div id="moon">
+        <h2>Moon</h2>
+        <div class="question-list"></div>
+      </div>
+      <div id="vietjack">
+        <h2>VietJack</h2>
+        <div class="question-list"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
