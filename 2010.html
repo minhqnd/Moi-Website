@@ -1,1 +1,29 @@
-<h1>Hehe sáng mai quét lại nha bận quá chưa xong <3 iu iu</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển hướng URL</title>
+</head>
+<body>
+    <script>
+        // Lấy URL hiện tại
+        var currentURL = window.location.href;
+
+        // Kiểm tra xem URL có chứa tham số "to" hay không
+        var urlParams = new URLSearchParams(window.location.search);
+        var toParam = urlParams.get("to");
+
+        // Nếu có tham số "to"
+        if (toParam) {
+            // Tạo đường dẫn mới dựa trên tham số "to"
+            var newURL = "https://minhquang.xyz/files/" + toParam + ".reality";
+            // Chuyển hướng đến đường dẫn mới
+            window.location.href = newURL;
+        } else {
+            // Nếu không có tham số "to", mặc định chuyển hướng đến đường dẫn này
+            var defaultURL = "https://minhquang.xyz/files/2010.reality";
+            window.location.href = defaultURL;
+        }
+    </script>
+</body>
+</html>
