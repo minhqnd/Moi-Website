@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Gửi lời yêu thương</title>
 </head>
 <style>
   body {
@@ -220,9 +220,9 @@
         <div class="div-3">MOI MOI</div>
         <div class="div-4">Gửi lời yêu thương đến con đĩ lồn &lt;3</div>
       </div>
-      <input class="div-5" id="username" placeholder="Link NGL của con đĩ lồn"></input>
+      <input class="div-5" id="username" placeholder="ID NGL của con đĩ lồn"></input>
       <div class="div-6">
-        <input class="div-7" id="question" placeholder="Lời yêu thương tới con đĩ lồn"></input>
+        <input class="div-7" id="question" placeholder="Lời yêu thương"></input>
         <button onclick="start()" class="div-8">Gửi</button>
       </div>
     </div>
@@ -243,7 +243,7 @@ function start() {
         if (response.status === 200) {
           // Thay đổi nội dung của div
           const div = document.querySelector(".div-4");
-          div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con &lt;3`;
+          div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con đĩ lồn &lt;3`;
         }
       })
       .catch((err) => {
