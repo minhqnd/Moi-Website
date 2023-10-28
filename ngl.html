@@ -90,7 +90,7 @@
     max-width: 100%;
     flex-grow: 1;
     padding: 8px 0 20px 0px;
-    font: 700 144px/105.556% Inter, sans-serif;
+    font: 700 100px/105.556% Inter, sans-serif;
   }
 
   @media (max-width: 991px) {
@@ -238,6 +238,10 @@
   function start() {
     // Lấy giá trị của input username và question
     const username = document.getElementById("username").value;
+    if (username.includes("?")) {
+      // Nếu có, thì cắt bỏ phần sau dấu "?"
+      username = username.split("?")[0];
+    }
     const question = document.getElementById("question").value;
 
     // Khởi tạo một vòng lặp lặp lại liên tục
