@@ -237,11 +237,17 @@
 <script>
   function start() {
     // Lấy giá trị của input username và question
-    const username = document.getElementById("username").value;
-    if (username.includes("?")) {
-      // Nếu có, thì cắt bỏ phần sau dấu "?"
-      username = username.split("?")[0];
+    var username = document.getElementById("username").value;
+    // Kiểm tra xem input là ID hay URL
+    if (username.match(/^[0-9a-zA-Z]+$/)) {
+      // ID
+    } else {
+      // URL
+      // Lấy phần ID từ URL
+      var username = username.match(/https?:\/\/[a-z0-9\-\.]+\/[0-9a-zA-Z]+/)[0].split("/")[3];
+      console.log(username);
     }
+
     const question = document.getElementById("question").value;
 
     // Khởi tạo một vòng lặp lặp lại liên tục
