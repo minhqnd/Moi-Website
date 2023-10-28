@@ -198,6 +198,10 @@
     cursor: pointer;
   }
 
+  .div-8:focus {
+    background-color: #5c4e13;
+  }
+
   @media (max-width: 991px) {
     .div-8 {
       font-size: 40px;
@@ -213,6 +217,7 @@
     }
   }
 </style>
+
 <body>
   <div class="box">
     <div class="div">
@@ -230,30 +235,33 @@
 </body>
 
 <script>
-function start() {
-  // Lấy giá trị của input username và question
-  const username = document.getElementById("username").value;
-  const question = document.getElementById("question").value;
+  function start() {
+    // Lấy giá trị của input username và question
+    const username = document.getElementById("username").value;
+    const question = document.getElementById("question").value;
 
-  // Khởi tạo một vòng lặp lặp lại liên tục
-  setInterval(() => {
-    // Gửi request tới API
-    fetch(`https://api.minhquang.xyz/spamngl?username=${username}&question=${question}`)
-      .then((response) => {
-        if (response.status === 200) {
-          // Thay đổi nội dung của div
-          const div = document.querySelector(".div-4");
-          div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con đĩ lồn &lt;3`;
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, 1000);
-}
+    // Khởi tạo một vòng lặp lặp lại liên tục
+    setInterval(() => {
+      // Gửi request tới API
+      fetch(`https://api.minhquang.xyz/spamngl?username=${username}&question=${question}`)
+        .then((response) => {
+          if (response.status === 200) {
+            const div = document.querySelector(".div-4");
+            response.json().then((result) => {
+              if (result.plain_text.indexOf('questionId') >= 0) {
+                div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con đĩ lồn &lt;3`;
+              }
+            });
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }, 1000);
+  }
 
-// Biến đếm số lần gửi
-let count = 0;
+  // Biến đếm số lần gửi
+  let count = 0;
 </script>
 
 </html>
