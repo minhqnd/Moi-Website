@@ -11,7 +11,7 @@
 - Loại bỏ `visibilitychange` và `blur` ([Ví dụ](http://daniemon.com/tech/webapps/page-visibility/) *cái này khi chuyển tab sẽ dừng video*)
   
 ### Ví dụ
-Đây là ví dụ về website sẽ thay đổi màu khi không ở trong tab.
+Đây là ví dụ về website sẽ thay đổi màu khi không focus vào tab.
 
 ![img](https://raw.githubusercontent.com/daijro/always-on-focus/main/preview/preview.gif)
 
