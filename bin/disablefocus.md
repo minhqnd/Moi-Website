@@ -49,7 +49,7 @@ console.log("%cDISABLED!", "color: red; font-size: x-large");
 ## Cách dùng sử dụng Userscript
 1. Tải [Tampermonkey](https://www.tampermonkey.net/) (Cho Chrome, Edge, Coccoc, etc...) hoặc [Userscirpts](https://apps.apple.com/us/app/userscripts/id1463298887) (Cho Safari trên macOS).
 
-2. [Bấm vào đây](../files/alwaysonfocus.user.js) để cài dặt Scripts
+2. [Bấm vào đây](../files/alwaysonfocus.user.js) để cài đặt Scripts
 
 3. Bật Userscript ở trong Dashboard của Tampermonkey hoặc Usersciprts.
 
