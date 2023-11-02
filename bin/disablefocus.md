@@ -2,7 +2,7 @@
 
 ## Cái này để làm l gì?
 
-**Alway on focus** là một script giúp ngăn các trang web biết rằng bạn đã chuyển tab hoặc không ở trong trang web. Doạn script này có các tính năng sau:
+**Alway on focus** là một script giúp ngăn các trang web biết rằng bạn đã chuyển tab hoặc không ở trong trang web. Đoạn script này có các tính năng sau:
 
 - Tắt [API hiển thị trang](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API)
 
@@ -47,7 +47,7 @@ console.log("%cDISABLED!", "color: red; font-size: x-large");
 ```
 
 ## Cách dùng sử dụng Userscript
-1. Tải [Tampermonkey](https://www.tampermonkey.net/) (Cho Chrome, Edge, Coccoc, etc...) hoặc [Userscirpts](https://apps.apple.com/us/app/userscripts/id1463298887) (Cho Safari trên macOS).
+1. Tải [Tampermonkey](https://www.tampermonkey.net/) (Cho Chrome, Edge, Coccoc, etc...) hoặc [Userscripts](https://apps.apple.com/us/app/userscripts/id1463298887) (Cho Safari trên macOS).
 
 2. [Bấm vào đây](../files/alwaysonfocus.user.js) để cài đặt Scripts
 
