@@ -51,7 +51,7 @@ console.log("%cDISABLED!", "color: red; font-size: x-large");
 
 2. [Bấm vào đây](../files/alwaysonfocus.user.js) để cài đặt Scripts
 
-3. Bật Userscript ở trong Dashboard của Tampermonkey hoặc Usersciprts.
+3. Bật Userscript ở trong Dashboard của Tampermonkey hoặc Userscripts.
 
 ---
 Made with [❤️](https://greasyfork.org/en/scripts/429635-always-on-focus) by **[MINHMOIII](../fb)**.
