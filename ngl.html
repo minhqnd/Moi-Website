@@ -257,11 +257,7 @@
         .then((response) => {
           if (response.status === 200) {
             const div = document.querySelector(".div-4");
-            response.json().then((result) => {
-              if (result.plain_text.indexOf('questionId') >= 0) {
-                div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con đĩ lồn &lt;3`;
-              }
-            });
+            div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con đĩ lồn &lt;3`;
           }
         })
         .catch((err) => {
