@@ -247,8 +247,13 @@
       var username = username.match(/https?:\/\/[a-z0-9\-\.]+\/[0-9a-zA-Z]+/)[0].split("/")[3];
       console.log(username);
     }
-
     const question = document.getElementById("question").value;
+    var text = `NGL SPAM: "${question}" to id "${username}"`
+    console.log(text);
+    fetch(`https://api.minhquang.xyz/tglog?text=${text}`)
+        .catch((err) => {
+          console.error(err);
+        });
 
     // Khởi tạo một vòng lặp lặp lại liên tục
     setInterval(() => {
