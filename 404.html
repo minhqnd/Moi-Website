@@ -301,7 +301,7 @@
                         })
                             .then(response => response.text())
                             .then(() => {
-                                window.open(result.url, "_self");
+                                window.location.href = result.url;
                             })
                             .catch(error => console.log('Error updating click count:', error));
                     } else {
