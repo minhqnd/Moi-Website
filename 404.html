@@ -296,7 +296,7 @@
                         fetch(apiUrl, {
                             method: 'PATCH',
                             headers: new Headers({ "Content-Type": "application/json" }),
-                            body: JSON.stringify({ "click": result.click + 1 }),
+                            body: JSON.stringify({ "click": result.click * 1 + 1 }),
                             redirect: 'follow'
                         })
                             .then(response => response.text())
