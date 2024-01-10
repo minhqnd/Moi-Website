@@ -4,28 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <!-- <link rel="shortcut icon" type="image/png"
-        href="https://raw.githubusercontent.com/minhqnd/minhqnd/main/img/favicon.ico" /> -->
     <title>minhqnd.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <meta name="title" content="minhqnd.com">
-    <meta name="description" content="URL shortener with support for custom alias">
-    <link rel="icon" href="https://minhqnd.com/icon/url.ico">
+    <meta name="description" content="minhqnd.com">
+    <link rel="icon" href="/img/">
     <!-- <meta itemprop="name" content="URL Redirect"> -->
-    <!-- <meta itemprop="description" content="URL shortener with support for custom alias"> -->
+    <!-- <meta itemprop="description" content="minhqnd.com"> -->
     <!--<meta itemprop="image" content="https://minhqnd.com/img/urlshort.png">-->
     <meta name="theme-color" content="#ffffff">
     <!-- OpenGraph -->
     <meta property="og:url" content="https://minhqnd.com">
     <meta property="og:site_name" content="minhqnd.com">
     <meta property="og:title" content="URL Redirect - minhqnd.com">
-    <meta property="og:description" content="URL shortener with support for custom alias">
+    <meta property="og:description" content="minhqnd.com">
 </head>
 
 <style>
-    @import url("https://fonts.googleapis.com/css?family=Cabin+Sketch");
-
     html {
         color-scheme: light dark;
     }
@@ -36,247 +32,61 @@
         min-height: 100%;
     }
 
-    h1 {
-        font-family: "Cabin Sketch", cursive;
-        font-size: 3em;
-        text-align: center;
-        opacity: 0.8;
-        order: 1;
-    }
-
-    h1 small {
-        display: block;
-    }
-
     .notfound {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: none;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
+        align-content: space-between;
         flex-direction: column;
-        margin: 0 auto;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        width: 100%;
+        text-align: center;
+        justify-content: space-between;
     }
 
-    a {
-        text-decoration: none;
-        transition: color 0.3s;
-    }
 
     @media (prefers-color-scheme: dark) {
-        a {
-            color: #fff;
+        .notfound a {
+            color: #e0f1ff;
+            text-decoration: none;
         }
-
-        a:hover {
-            color: #777;
-        }
+       .copyright {
+        color: #606060;
+       }
     }
 
     @media (prefers-color-scheme: light) {
-        a {
-            color: #000;
+        .notfound a {
+            color: #131383;
+            text-decoration: none;
         }
-
-        a:hover {
-            color: #777;
-        }
+        .copyright {
+        color: #c5c5c5;
+       }
     }
 
-
-    .sketch {
-        position: relative;
-        height: 400px;
-        min-width: 400px;
-        margin: 0;
-        overflow: visible;
-        order: 2;
-    }
-
-    .bee-sketch {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .red {
-        background: url(/img/404//red-1.png) no-repeat center center;
-        opacity: 1;
-        animation: red 3s linear infinite, opacityRed 5s linear alternate infinite;
-    }
-
-    .blue {
-        background: url(/img/404//blue-1.png) no-repeat center center;
-        opacity: 0;
-        animation: blue 3s linear infinite, opacityBlue 5s linear alternate infinite;
-    }
-
-    @media only screen and (min-width: 780px) {
-        .notfound {
-            flex-direction: row;
-            padding: 1em 3em 1em 0em;
-        }
-
-        h1 {
-            text-align: right;
-            order: 2;
-            padding-bottom: 2em;
-            padding-left: 2em;
-        }
-
-        .sketch {
-            order: 1;
-        }
-    }
-
-    @keyframes blue {
-        0% {
-            background-image: url(/img/404//blue-1.png);
-        }
-
-        9.09% {
-            background-image: url(/img/404//blue-2.png);
-        }
-
-        27.27% {
-            background-image: url(/img/404//blue-3.png);
-        }
-
-        36.36% {
-            background-image: url(/img/404//blue-4.png);
-        }
-
-        45.45% {
-            background-image: url(/img/404//blue-5.png);
-        }
-
-        54.54% {
-            background-image: url(/img/404//blue-6.png);
-        }
-
-        63.63% {
-            background-image: url(/img/404//blue-7.png);
-        }
-
-        72.72% {
-            background-image: url(/img/404//blue-8.png);
-        }
-
-        81.81% {
-            background-image: url(/img/404//blue-9.png);
-        }
-
-        100% {
-            background-image: url(/img/404//blue-1.png);
-        }
-    }
-
-    @keyframes red {
-        0% {
-            background-image: url(/img/404//red-1.png);
-        }
-
-        9.09% {
-            background-image: url(/img/404//red-2.png);
-        }
-
-        27.27% {
-            background-image: url(/img/404//red-3.png);
-        }
-
-        36.36% {
-            background-image: url(/img/404//red-4.png);
-        }
-
-        45.45% {
-            background-image: url(/img/404//red-5.png);
-        }
-
-        54.54% {
-            background-image: url(/img/404//red-6.png);
-        }
-
-        63.63% {
-            background-image: url(/img/404//red-7.png);
-        }
-
-        72.72% {
-            background-image: url(/img/404//red-8.png);
-        }
-
-        81.81% {
-            background-image: url(/img/404//red-9.png);
-        }
-
-        100% {
-            background-image: url(/img/404//red-1.png);
-        }
-    }
-
-    @keyframes opacityBlue {
-        from {
-            opacity: 0;
-        }
-
-        25% {
-            opacity: 0;
-        }
-
-        75% {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes opacityRed {
-        from {
-            opacity: 1;
-        }
-
-        25% {
-            opacity: 1;
-        }
-
-        75% {
-            opacity: 0.3;
-        }
-
-        to {
-            opacity: 0.3;
-        }
+    .notfound a:hover {
+        text-decoration: none;
     }
 </style>
 
 <body>
-    <div class="redirecting">redirecting...</div>
+    <div class="redirecting">Redirecting...</div>
     <div class="notfound">
-        <div class="sketch">
-            <div class="bee-sketch red"></div>
-            <div class="bee-sketch blue"></div>
+        <div>
+            <h2>Sorry, this page isn't available.</h2>
+            <p>The link you followed may be broken, or the page may have been removed. <a href="/">Go back to home.</a>
+            </p>
         </div>
-        <h1>404:
-            <small>Page Not Found</small>
-            <small><a href="/">go home</a></small>
-        </h1>
+        <span class="copyright">© 2024 minhqnd from MOI, Inc.</>
     </div>
 
     <script>
         var title = document.getElementById('title');
         var redirecting = document.getElementsByClassName('redirecting')[0];
         var notfound = document.getElementsByClassName('notfound')[0];
-        var path = location.pathname;
+        // var path = location.pathname;
+        var path = "123";
+
 
         var requestOptions = {
             method: 'GET',
@@ -301,9 +111,8 @@
                         })
                             .then(response => response.text())
                             .then(() => {
-                                window.location.replace(result.url);
+                                // window.location.replace(result.url);
                             })
-                            .catch(error => console.log('Error updating click count:', error));
                     } else {
                         setNotFound();
                     }
