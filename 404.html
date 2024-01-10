@@ -84,8 +84,7 @@
         var title = document.getElementById('title');
         var redirecting = document.getElementsByClassName('redirecting')[0];
         var notfound = document.getElementsByClassName('notfound')[0];
-        // var path = location.pathname;
-        var path = "123";
+        var path = location.pathname;
 
 
         var requestOptions = {
@@ -111,7 +110,7 @@
                         })
                             .then(response => response.text())
                             .then(() => {
-                                // window.location.replace(result.url);
+                                window.location.replace(result.url);
                             })
                     } else {
                         setNotFound();
