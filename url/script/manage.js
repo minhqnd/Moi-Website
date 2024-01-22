@@ -47,25 +47,6 @@ const check = async () => {
 				.catch(error => {
 					console.log('Error:', error);
 				});
-
-			// firebase.database().ref("shortenurl/" + key).once("value", snapshot => {
-			// 	if (snapshot.exists()) {
-			// 		console.log("found!");
-			// 		output.style.display = 'block'
-			// 		erbox.style.display = 'none'
-			// 		console.log(snapshot.val().url)
-			// 		urlcc.value = snapshot.val().url
-			// 		time.innerHTML = snapshot.val().time
-			// 		click.innerHTML = 'click: ' + snapshot.val().click
-			// 		return true;
-			// 	} else {
-			// 		output.style.display = 'none'
-			// 		erbox.style.display = 'block'
-			// 		console.log('not found')
-
-			// 		erbox.innerHTML = 'alias not found'
-			// 	}
-			// })
 		} else {
 			keyinput.value = ''
 			status.innerHTML = 'delete'
