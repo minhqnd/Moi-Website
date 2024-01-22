@@ -95,6 +95,7 @@ let send_request = async (path) => {
 
     output.style.display = 'block'
     shortenedURL.value = window.location.href + "/" + path
+    // copy to clipboard
     copyer('shortenedURL')
     sucess.innerHTML = 'copied to clipboard'
     status.innerHTML = 'Shorten'
@@ -128,5 +129,11 @@ let copyer = (containerid) => {
     }
 }
 
+// add event listeners enter key
+urlinput.addEventListener('keyup', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        sbtn.click()
+    }
+})
 sbtn.addEventListener('click', shorturl)
-// new ClipboardJS('.copy');
