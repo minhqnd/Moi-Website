@@ -1,4 +1,4 @@
-
+var apiUrl = "https://stromez-ed239-default-rtdb.asia-southeast1.firebasedatabase.app/public/shortenurl/"
 const urlinput = document.getElementById('urlinput')
 const custominput = document.getElementById('custominput')
 const sbtn = document.getElementById('sbtn')
@@ -15,7 +15,7 @@ var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getD
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var dateTime = date + ' ' + time;
 
-const geturl = ()=>{
+const geturl = () => {
     const url = urlinput.value
     return url
 }
@@ -30,8 +30,13 @@ function makeid(length) {
     return result;
 }
 
-const sleep = ms=>new Promise(resolve=>setTimeout(resolve, ms))
-const shorturl = async()=>{
+var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+};
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const shorturl = async () => {
     status.innerHTML = 'shortening...'
     erbox.style.display = 'none'
     output.style.display = 'none'
@@ -46,27 +51,29 @@ const shorturl = async()=>{
         erbox.innerHTML = 'invalid url'
     } else {
         if (custominput.value == '') {
-            const cc = makeid(5)
-            console.log(cc);
-            send_request(cc);
+            const path = makeid(5)
+            console.log(path);
+            send_request(path);
             console.log('done');
         } else if (cre.test(custominput.value)) {
-            firebase.database().ref("shortenurl/" + custominput.value).limitToFirst(1).once("value", snapshot=>{
-                if (snapshot.exists()) {
-                    console.log("exists!");
-                    erbox.style.display = 'block'
-                    erbox.innerHTML = 'alias already in use, choose another'
-                    custominput.value = ''
-                    status.innerHTML = 'shorten'
-                    return true;
-                } else if (cre.test(custominput.value)) {
-                    const cc = custominput.value
-                    console.log(cc);
-                    send_request(cc)
-
-                }
-            }
-            )
+            const path = custominput.value
+            fetch(apiUrl + path + ".json", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result);
+                    if (result == null) {
+                        send_request(path)
+                    } else {
+                        erbox.style.display = 'block'
+                        erbox.innerHTML = 'alias already in use, choose another'
+                        custominput.value = ''
+                        status.innerHTML = 'shorten'
+                        return true;
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
         } else {
             custominput.value = ''
             status.innerHTML = 'shorten'
@@ -76,22 +83,25 @@ const shorturl = async()=>{
     }
 }
 
-let send_request = async(cc)=>{
+let send_request = async (path) => {
     let longurl = geturl()
-    await firebase.database().ref("shortenurl/" + cc).set({
-        'url': longurl,
-        'time': dateTime,
-        'click': ('0')
-    });
+
+    fetch(apiUrl + path + ".json", {
+        method: 'PATCH',
+        headers: new Headers({ "Content-Type": "application/json" }),
+        body: JSON.stringify({ "click": 0, "time": dateTime, "url": longurl }),
+        redirect: 'follow'
+    })
+
     output.style.display = 'block'
-    shortenedURL.value = 'https://minhquang.xyz/' + cc
+    shortenedURL.value = window.location.href + "/" + path
     copyer('shortenedURL')
     sucess.innerHTML = 'copied to clipboard'
     status.innerHTML = 'Shorten'
-    document.getElementById("qrr").src = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=http://minhquang.xyz/" + cc + "&choe=UTF-8";
+    document.getElementById("qrr").src = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + window.location.href + "/" + path + "&choe=UTF-8";
 }
 
-let copyer = (containerid)=>{
+let copyer = (containerid) => {
     let elt = document.getElementById(containerid)
     if (document.selection) {
         // IE
@@ -119,4 +129,4 @@ let copyer = (containerid)=>{
 }
 
 sbtn.addEventListener('click', shorturl)
-new ClipboardJS('.copy');
+// new ClipboardJS('.copy');
