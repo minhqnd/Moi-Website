@@ -94,7 +94,7 @@ let send_request = async (path) => {
     })
 
     output.style.display = 'block'
-    shortenedURL.value = window.location.host + "/" + path
+    shortenedURL.value = window.location.origin + "/" + path
     // copy to clipboard
     copyer('shortenedURL')
     sucess.innerHTML = 'copied to clipboard'
