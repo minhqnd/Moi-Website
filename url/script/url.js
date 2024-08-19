@@ -99,7 +99,7 @@ let send_request = async (path) => {
     copyer('shortenedURL')
     sucess.innerHTML = 'copied to clipboard'
     status.innerHTML = 'Shorten'
-    document.getElementById("qrr").src = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + window.location.href + "/" + path + "&choe=UTF-8";
+    document.getElementById("qrr").src = "https://api.minhqnd.com/qr?data=" + window.location.origin + "/" + path;
 }
 
 let copyer = (containerid) => {
