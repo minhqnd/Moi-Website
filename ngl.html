@@ -236,40 +236,14 @@
 
 <script>
   function start() {
-    // Lấy giá trị của input username và question
-    var username = document.getElementById("username").value;
-    // Kiểm tra xem input là ID hay URL
-    if (username.match(/^[0-9a-zA-Z]+$/)) {
-      // ID
-    } else {
-      // URL
-      // Lấy phần ID từ URL
-      var username = username.match(/https?:\/\/[a-z0-9\-\.]+\/[0-9a-zA-Z]+/)[0].split("/")[3];
-      console.log(username);
-    }
-    const question = document.getElementById("question").value;
-    var text = `NGL SPAM: "${question}" to id "${username}"`
-    console.log(text);
-    fetch(`https://api.minhquang.xyz/tglog?text=${text}`)
-        .catch((err) => {
-          console.error(err);
-        });
-
-    // Khởi tạo một vòng lặp lặp lại liên tục
-    setInterval(() => {
-      // Gửi request tới API
-      fetch(`https://api.minhquang.xyz/spamngl?username=${username}&question=${question}`)
-        .then((response) => {
-          if (response.status === 200) {
-            const div = document.querySelector(".div-4");
-            div.innerHTML = `Đã gửi ${++count} lời yêu thương đến con đĩ lồn &lt;3`;
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }, 100);
-  }
+  setInterval(() => {
+    fetch("https://ngl.link/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
+      body: `username=${encodeURIComponent(document.getElementById("username").value)}&question=${encodeURIComponent(document.getElementById("question").value)}&deviceId=6c61e336-d8ac-46ac-a3af-065c68b05df5&gameSlug=&referrer=`
+    });
+  }, 100);
+}
 
   // Biến đếm số lần gửi
   let count = 0;
